@@ -1,7 +1,7 @@
 <template>
   <div class="app-layout">
     <nav v-if="authStore.estaAutenticado" class="navbar">
-      <div class="nav-brand">📦 StockPro</div>
+      <div class="nav-brand">Getion Stock</div>
       <div class="nav-links">
         <router-link to="/productos">Productos</router-link>
         <router-link to="/movimientos">Movimientos</router-link>

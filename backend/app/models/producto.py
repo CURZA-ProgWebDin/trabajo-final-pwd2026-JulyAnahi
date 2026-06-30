@@ -16,3 +16,6 @@ class Producto(BaseModel):
     
     # SOLUCIÓN: Definimos de forma explícita el backref como 'producto_relacion'
     movimientos = db.relationship('MovimientoStock', backref='producto_relacion', lazy=True)
+    
+    categoria = db.relationship('Categoria', backref=db.backref('productos', lazy=True), lazy=True)
+    proveedor = db.relationship('Proveedor', backref=db.backref('productos', lazy=True), lazy=True)

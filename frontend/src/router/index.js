@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
-// Importaciones de las Vistas Reales del Sistema
 import LoginView from '@/views/LoginView.vue'
 import ProductosView from '@/views/ProductosView.vue'
 import MovimientosView from '@/views/MovimientosView.vue'
@@ -26,7 +25,6 @@ const router = createRouter({
   routes
 })
 
-// Navigation Guards para restringir accesos según Token y Rol
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
 

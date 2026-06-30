@@ -10,15 +10,15 @@ class ProductoController:
             "id":p.id, "nombre":p.nombre, "descripcion": p.descripcion,
             "precio_costo": float(p.precio_costo), "precio_venta": float(p.precio_venta),
             "stock_actual": p.stock_actual, "stock_minimo":p.stock_minimo,
-            "categoria": p.categoria.nombre,
-            "proveedor": p.proveedor.nombre,
+            "categoria": p.categoria.nombre if p.categoria else None,
+            "proveedor": p.proveedor.nombre if p.proveedor else None,
             "categoria_id": p.categoria_id, "proveedor_id": p.proveedor_id
         } for p in prods]),200
     @staticmethod
     def crear():
         data = request.get_json() or {}
         nuevo = Producto(
-            nombre=data['nombre'], descripcion=data.get('descripcio'),
+            nombre=data['nombre'], descripcion=data.get('descripcion'),
             precio_costo=data['precio_costo'], precio_venta=data['precio_venta'],
             stock_actual=data.get('stock_actual', 0), stock_minimo=data.get('stock_minimo', 0),
             categoria_id=data['categoria_id'], proveedor_id=data.get('proveedor_id')
@@ -30,7 +30,7 @@ class ProductoController:
     def editar(id):
         p = Producto.query.get_or_404(id)
         data = request.get_json() or {}
-        p.nombre = data.get('nombre, p.nombre')
+        p.nombre = data.get('nombre', p.nombre)
         p.descripcion = data.get('descripcion', p.descripcion)
         p.precio_costo = data.get('precio_costo', p.precio_costo)
         p.precio_venta = data.get('precio_venta', p.precio_venta)
